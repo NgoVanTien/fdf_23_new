@@ -1,0 +1,28 @@
+<li class="wow fadeInLeft"
+  data-wow-duration="300ms" data-wow-delay="300ms">
+  <div class="blog-img">
+    <%= link_to "#" do %>
+    <%= image_tag product.image.url, class: "wow fadeInUp" %>
+    <% end %>
+  </div>
+  <div class="content-right">
+    <h3><%= product.name %></h3>
+    <p><%= product.description %></p>
+    <p><%= product.category.name %></p>
+    <div class="aa-product-rating rating" id = "rating_star">
+      <% i = 1 %>
+      <% while i <= product.rating.floor do %>
+        <%= show_rating "star-active" %>
+        <% i += 1 %>
+      <% end %>
+      <% while i <= 5 do %>
+        <%= show_rating "" %>
+        <% i += 1 %>
+      <% end %>
+    </div>
+    <p><%= t "price" %><%= t "colon"%><%= number_with_precision(product.price,
+      precision: 0)%> <%= t "vnd" %></p>
+    <%= link_to t("btn_view"), product_path(product),
+      class: "btn btn-default btn-more-info bounceIn" %>
+  </div>
+</li>
